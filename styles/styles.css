@@ -156,10 +156,6 @@
   z-index: 1;
 }
 
-.card-address {
-  display: none;
-}
-
 .card-email {
   text-transform: none;
 }

@@ -1,6 +1,5 @@
 html, body {
   overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -9,6 +8,8 @@ body {
   background-attachment: fixed;
   position: relative;
   z-index: 0;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 body:after {

@@ -17,6 +17,7 @@ body:after {
   content: '';
   height: 100%;
   position: fixed;
+  scroll-behavior: smooth;
   width: 100%;
   z-index: -1;
 }

@@ -60,20 +60,7 @@
     }
     // Function to generate contact info from a person.
     function generateInfo() {
-      const { phone, email } = this,
-        { street, city, state, postcode } = this.location;
-      // Address Element
-      const addr = generateElement("addr", "card-address");
-      // Street Address
-      const streetAddress = generateElement("div", "card-street", street);
-      // City, State, ZIP/Postal Code
-      const csz = generateElement(
-        "div",
-        "card-csz",
-        `${city}, ${state} ${postcode}`
-      );
-      addr.appendChild(streetAddress);
-      addr.appendChild(csz);
+      const { phone, email } = this;
       // Contact Info
       const infoDiv = generateElement("div", "card-contact");
       const phoneNum = generateElement("div", "card-phone", phone);
@@ -82,7 +69,6 @@
       infoDiv.appendChild(emailAddr);
 
       const masterDiv = generateElement("div", "card-info");
-      masterDiv.appendChild(addr);
       masterDiv.appendChild(infoDiv);
       return masterDiv;
     }

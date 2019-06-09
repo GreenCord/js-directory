@@ -1,6 +1,6 @@
 # js-directory
 
-_v1.0.1_
+_v1.1.0_
 
 Exercise to create an example company directory.
 

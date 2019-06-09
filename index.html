@@ -1,103 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Company Directory</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display:700i&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="reset.css" />
-    <style>
-      * {
-        box-sizing: border-box;
-      }
 
-      html,
-      body {
-        font: 100%/1 "Montserrat", "Helvetica Neue", "Segoe UI", arial,
-          helvetica, sans-serif;
-        height: 100%;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Company Directory</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato|Playfair+Display:900i&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="reset.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-      body {
-        display: flex;
-        flex-direction: column;
-      }
+    html,
+    body {
+      font: 100%/1 "Lato", "Helvetica Neue", "Segoe UI", arial,
+        helvetica, sans-serif;
+      height: 100%;
+    }
 
-      .flex-wrapper {
-        flex: 1 0 auto;
-      }
+    body {
+      display: flex;
+      flex-direction: column;
+    }
 
-      .site-header,
-      .site-footer {
-        padding: 15px;
-      }
-      .site-header {
-        background: hsl(240, 55%, 15%);
-        color: hsl(48, 69%, 90%);
-        font-family: "Playfair Display", "Baskerville", "Bookman", "Georgia",
-          "Constantia", serif;
-        font-weight: 700;
-      }
+    .flex-wrapper {
+      flex: 1 0 auto;
+    }
 
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-family: "Playfair Display", "Baskerville", "Bookman", "Georgia",
-          "Constantia", serif;
-        font-weight: 700;
-        line-height: 1.25;
-        margin-bottom: 30px;
-      }
+    .site-header,
+    .site-footer {
+      padding: 15px;
+    }
 
-      h1 + p,
-      h2 + p,
-      h3 + p,
-      h4 + p,
-      h5 + p,
-      h6 + p,
-      p + p {
-        margin-top: -15px;
-      }
+    .site-header {
+      background: hsl(240, 55%, 15%);
+      color: hsl(48, 69%, 90%);
+      font-family: "Playfair Display", "Baskerville", "Bookman", "Georgia",
+        "Constantia", serif;
+      font-weight: 700;
+    }
 
-      h1 {
-        font-size: 2rem;
-      }
-      p {
-        line-height: 1.5;
-      }
-    </style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Playfair Display", "Baskerville", "Bookman", "Georgia",
+        "Constantia", serif;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 30px;
+    }
 
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="flex-wrapper">
-      <header class="site-header">Company Directory</header>
-      <main>
+    h1+p,
+    h2+p,
+    h3+p,
+    h4+p,
+    h5+p,
+    h6+p,
+    p+p {
+      margin-top: -15px;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  </style>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="flex-wrapper">
+    <header class="site-header">Company Directory</header>
+    <main>
+      <div class="wrapper">
         <article class="banner">
-          <h1>Our employees are seriously our greatest asset.</h1>
+          <h1>Our employees are&nbsp;seriously our&nbsp;greatest&nbsp;asset.</h1>
           <p>
             Whether you have been a long time customer or a new one, each
             employee helps you find success with our products and services.
           </p>
         </article>
+      </div>
+      <div class="wrapper">
         <section>
           <ul class="cardlist">
-            <li></li>
+
           </ul>
         </section>
-      </main>
-    </div>
-    <footer class="site-footer">
-      &copy; 2019 &ndash; Steven Martinez<br />People data courtesy of the
-      <a href="https://randomuser.me">Random User Generator</a>.
-    </footer>
-    <script src="directory.js"></script>
-  </body>
+      </div>
+    </main>
+  </div>
+  <footer class="site-footer">
+    &copy; 2019 &ndash; Steven Martinez<br />People data courtesy of the
+    <a href="https://randomuser.me">Random User Generator</a>.
+  </footer>
+  <script src="directory.js"></script>
+</body>
+
 </html>

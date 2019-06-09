@@ -36,6 +36,17 @@
     }
   }
   function renderDirectory(directory) {
+    // Function taking the person phone data and normalizing the format.
+    // Returns empty string or string formatted to: (###)###-####.
+    function normalizePhone() {
+      let phone = this.replace(/\D/g, "");
+      console.log("phone");
+      phone = phone.match(/^(\d{3})(\d{3})(\d{4})$/);
+      if (phone) {
+        return `(${phone[1]})${phone[2]}-${phone[3]}`;
+      }
+      return "";
+    }
     // Function call with person to generate a persons image.
     // Size can be 'large', 'medium', or 'thumbnail'.
     function generatePersonImage(size) {
@@ -61,9 +72,10 @@
     // Function to generate contact info from a person.
     function generateInfo() {
       const { phone, email } = this;
+      const formattedPhone = normalizePhone.call(phone);
       // Contact Info
       const infoDiv = generateElement("div", "card-contact");
-      const phoneNum = generateElement("div", "card-phone", phone);
+      const phoneNum = generateElement("div", "card-phone", formattedPhone);
       const emailAddr = generateElement("div", "card-email", email);
       infoDiv.appendChild(phoneNum);
       infoDiv.appendChild(emailAddr);

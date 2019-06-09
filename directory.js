@@ -1,8 +1,9 @@
+// IIFE to ensure contained variables and function calls.
 (function() {
   const endpoint =
     "https://randomuser.me/api/?results=27&nat=US,CA&exc=id,login,registered,dob,gender";
   const storageKey = "JS_DIRECTORY";
-  // Check local storage for cached data.
+  // Check local storage for cached data or AJAX to endpoint to retrieve.
   let directory = JSON.parse(localStorage.getItem(storageKey));
   if (directory) {
     console.log("LOADING STORED DIRECTORY...");
@@ -35,39 +36,32 @@
     }
   }
   function renderDirectory(directory) {
-    console.log("renderDirectory data", directory);
-
     const ul = document.querySelector("ul.cardlist");
 
-    function generateImage(person, size) {
+    // Function call with person to generate a persons image.
+    // Size can be 'large', 'medium', or 'thumbnail'.
+    function generatePersonImage(size) {
       const imgDiv = document.createElement("div");
       imgDiv.setAttribute("class", "card-image");
 
       const img = document.createElement("IMG");
-      img.setAttribute("src", person.picture[size]);
-      img.setAttribute("alt", `${person.name.first} ${person.name.last}`);
+      img.setAttribute("src", this.picture[size]);
+      img.setAttribute("alt", `${this.name.first} ${this.name.last}`);
 
       imgDiv.appendChild(img);
       return imgDiv;
     }
-
-    function generateName(person) {
-      const { title, first, last } = person.name;
-      const div = document.createElement("div");
-      div.setAttribute("class", "card-name");
-      div.textContent = `${first} ${last}`;
-      return div;
-    }
+    // Function to generate a simple element with a class. Text is optional.
     function generateElement(elem, className, text) {
       const element = document.createElement(elem);
       element.setAttribute("class", className);
       if (text) element.textContent = text;
       return element;
     }
-
-    function generateInfo(person) {
-      const { phone, email } = person,
-        { street, city, state, postcode } = person.location;
+    // Function to generate contact info from a person.
+    function generateInfo() {
+      const { phone, email } = this,
+        { street, city, state, postcode } = this.location;
       // Address Element
       const addr = generateElement("addr", "card-address");
       // Street Address
@@ -96,19 +90,25 @@
       masterDiv.appendChild(infoDiv);
       return masterDiv;
     }
-    function renderPerson(person) {
+    // Function to render the full person card.
+    function renderPersonCard() {
       const li = document.createElement("li");
-
-      li.appendChild(generateName(person));
-      li.appendChild(generateImage(person, "large"));
-      li.appendChild(generateInfo(person));
+      li.appendChild(
+        generateElement(
+          "div",
+          "card-name",
+          `${this.name.first} ${this.name.last}`
+        )
+      );
+      li.appendChild(generatePersonImage.call(this, "large"));
+      li.appendChild(generateInfo.call(this));
       ul.appendChild(li);
     }
 
-    const people = directory.results.map(person => person);
-    console.log("people", people);
-    people.forEach(person => {
-      renderPerson(person);
+    // Extract people from dataset and render their cards.
+    const people = directory.results.map(person => {
+      renderPersonCard.call(person);
+      return person;
     });
   }
 })();

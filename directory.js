@@ -6,10 +6,8 @@
   // Check local storage for cached data or AJAX to endpoint to retrieve.
   let directory = JSON.parse(localStorage.getItem(storageKey));
   if (directory) {
-    console.log("LOADING STORED DIRECTORY...");
     renderDirectory(directory);
   } else {
-    console.log("AJAX REQUEST TO GET DATA...");
     // XMLHttpRequest method.
     let httpRequest = new XMLHttpRequest();
     if (!httpRequest) {
@@ -40,7 +38,6 @@
     // Returns empty string or string formatted to: (###)###-####.
     function normalizePhone() {
       let phone = this.replace(/\D/g, "");
-      console.log("phone");
       phone = phone.match(/^(\d{3})(\d{3})(\d{4})$/);
       if (phone) {
         return `(${phone[1]})${phone[2]}-${phone[3]}`;
@@ -65,8 +62,6 @@
       const element = document.createElement(elem);
       element.setAttribute("class", className);
       if (text) element.textContent = text;
-      if (className === "card-name")
-        console.log("generateElement div", element);
       return element;
     }
     // Function to generate contact info from a person.

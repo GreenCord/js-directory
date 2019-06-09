@@ -36,8 +36,6 @@
     }
   }
   function renderDirectory(directory) {
-    const ul = document.querySelector("ul.cardlist");
-
     // Function call with person to generate a persons image.
     // Size can be 'large', 'medium', or 'thumbnail'.
     function generatePersonImage(size) {
@@ -56,6 +54,8 @@
       const element = document.createElement(elem);
       element.setAttribute("class", className);
       if (text) element.textContent = text;
+      if (className === "card-name")
+        console.log("generateElement div", element);
       return element;
     }
     // Function to generate contact info from a person.
@@ -76,12 +76,8 @@
       addr.appendChild(csz);
       // Contact Info
       const infoDiv = generateElement("div", "card-contact");
-      const phoneNum = generateElement("div", "card-phone", `Phone: ${phone}`);
-      const emailAddr = document.createElement(
-        "div",
-        "card-email",
-        `Email: ${email}`
-      );
+      const phoneNum = generateElement("div", "card-phone", phone);
+      const emailAddr = generateElement("div", "card-email", email);
       infoDiv.appendChild(phoneNum);
       infoDiv.appendChild(emailAddr);
 
@@ -92,15 +88,18 @@
     }
     // Function to render the full person card.
     function renderPersonCard() {
+      const ul = document.querySelector("ul.card-list");
       const li = document.createElement("li");
-      li.appendChild(
-        generateElement(
-          "div",
-          "card-name",
-          `${this.name.first} ${this.name.last}`
-        )
+      li.setAttribute("class", "card-item");
+      const name = generateElement(
+        "div",
+        "card-name",
+        `${this.name.first} ${this.name.last}`
       );
-      li.appendChild(generatePersonImage.call(this, "large"));
+      name.appendChild(generatePersonImage.call(this, "large"));
+      li.appendChild(name);
+
+      // li.appendChild(generatePersonImage.call(this, "large"));
       li.appendChild(generateInfo.call(this));
       ul.appendChild(li);
     }

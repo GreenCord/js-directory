@@ -125,6 +125,8 @@
 }
 
 .card-image {
+  background: white;
+  color: black;
   left: -8%;
   top: -33%;
   padding-top: 0.9375rem;

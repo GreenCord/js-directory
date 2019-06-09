@@ -28,7 +28,6 @@
 }
 
 .banner:before {
-  /* background: hsl(32, 25%, 75%); */
   background: silver;
   bottom: 0;
   content: "";
@@ -44,7 +43,6 @@
 .banner:after {
   background: hsl(240, 59%, 92%) url('../img/people_480.jpg') 50% 50% no-repeat;
   background-size: cover;
-  /* opacity: 0.5; */
   bottom: 0;
   content: "";
   left: 0;
@@ -238,12 +236,6 @@
   .card-name, .card-info {
     padding-right: 1.8750rem;
   }
-  /* .card-item:nth-of-type(3n+1) {
-    justify-self: right;
-  }
-  .card-item:nth-of-type(3n+3) {
-    justify-self: left;
-  } */
 }
 
 @media only screen and (min-width: 82.9375rem) {

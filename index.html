@@ -32,15 +32,34 @@
 
     .site-header,
     .site-footer {
+      background: hsl(240, 55%, 15%);
+      color: hsl(48, 69%, 90%);
       padding: 15px;
+      text-align: center;
+    }
+
+    .site-footer a,
+    .site-footer a:link {
+      color: hsl(48, 69%, 90%);
+    }
+
+    .site-footer a:visited,
+    .site-footer a:hover,
+    .site-footer a:active {
+      color: hsl(32, 77%, 70%)
     }
 
     .site-header {
-      background: hsl(240, 55%, 15%);
-      color: hsl(48, 69%, 90%);
-      font-family: "Vollkorn", "Baskerville", "Bookman", "Georgia",
-        "Constantia", serif;
-      font-weight: 700;
+      font-family: "PT Sans", "Helvetica Neue", "Segoe UI", arial,
+        helvetica, sans-serif;
+      font-size: 1.125rem;
+      font-weight: 400;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+    }
+
+    .site-footer {
+      line-height: 1.5;
     }
 
     h1,
@@ -51,6 +70,7 @@
     h6 {
       font-family: "Vollkorn", "Baskerville", "Bookman", "Georgia",
         "Constantia", serif;
+      font-style: italic;
       font-weight: 700;
       line-height: 1.25;
       margin-bottom: 30px;
@@ -96,9 +116,8 @@
         </article>
       </div>
       <div class="wrapper">
-        <section>
+        <section class="card-container">
           <ul class="card-list">
-
           </ul>
         </section>
       </div>

@@ -128,10 +128,8 @@
     function doStorage(action, key, data) {
       switch (action) {
         case "get":
-          console.log("get storage");
           return JSON.parse(window.localStorage.getItem(key));
         case "set":
-          console.log("set storage");
           data
             ? window.localStorage.setItem(key, JSON.stringify(data))
             : console.warn("Storage data not provided.");
@@ -166,6 +164,7 @@
   // Attempt to get data from storage. If storage doesn't exist, get from API.
   let data = storage.doStorage("get", STORAGE_KEY);
   if (data) {
+    console.log("got data from storage", data);
     directory.createDirectory(data);
   } else {
     data = getData.fetchData(config);

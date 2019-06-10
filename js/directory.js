@@ -1,16 +1,15 @@
 (function() {
-  const config = {
-    url: "https://randomuser.me/api/",
-    results: [27],
-    nat: ["US", "CA"],
-    exc: ["id", "login", "registered", "dob", "gender"]
-  };
-  const getData = (function ajaxHandler(config) {
-    const endpoint = config;
+  // ----------------------------------------------------------------------------
+  // Method: getData | Returns: parsed JSON
+  // ----------------------------------------------------------------------------
+  // Info: Uses Fetch API to retrieve data from an API endpoint.
+  //       Config object contains URL stub and parameters with array vals.
+  //       API URL is constructed automatically using keys/values as params.
+  // ----------------------------------------------------------------------------
+  const getData = (function ajaxHandler() {
     // Takes config obj and constructs the API URL.
     // Returns URL string.
     function constructUrl(endpoint) {
-      console.log("constructUrl fired");
       let stub = [];
       let params = [];
       let url;
@@ -26,29 +25,30 @@
     }
     // Fetches Data from URL
     function fetchData(endpoint) {
-      console.log("fetchData fired");
       const url = constructUrl(endpoint);
-      console.log("constructed url", url);
-      fetch(url)
-        .then(function(response) {
-          console.log("fetch response", response);
-          if (!response.ok) {
-            throw new Error(
-              `Problem fetching data, status code: ${response.status}`
-            );
-          }
-          return response.json();
-        })
-        .then(function(json) {
-          console.log(json);
-        });
+      return fetch(url).then(function(response) {
+        if (!response.ok) {
+          return new Error(
+            `Problem fetching data, status code: ${response.status}`
+          );
+        }
+        return response.json();
+      });
     }
     return {
       fetchData: fetchData
     };
   })();
 
-  console.log(getData.fetchData(config));
+  const config = {
+    url: "https://randomuser.me/api/",
+    results: [27],
+    nat: ["US", "CA"],
+    exc: ["id", "login", "registered", "dob", "gender"]
+  };
+
+  const data = getData.fetchData(config);
+  data.then(response => console.log(response));
 })();
 
 // IIFE to ensure contained variables and function calls.
